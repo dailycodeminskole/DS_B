@@ -1,0 +1,87 @@
+
+# opening existing file
+# reading a file
+
+f = open(r"C:\Users\RAHUL\Documents\OnePython\5. Sept DS 9AM 4PM\CLASS\L40.py")
+print(f.mode) # checking mode of operation a file 
+print(f.read())
+
+
+# creating file
+f2 = open(r"C:\Users\RAHUL\Documents\OnePython\5. Sept DS 9AM 4PM\CLASS\Sample1.txt","w")
+f2.write("Line 1")
+f2.write("Line 2")
+f2.write("Line 3")
+f2.close()
+
+# reading newly created file
+
+f2 = open(r"C:\Users\RAHUL\Documents\OnePython\5. Sept DS 9AM 4PM\CLASS\Sample1.txt")
+print(f2.read())
+
+
+#editing  newly created file
+# file will bw over written
+f2 = open(r"C:\Users\RAHUL\Documents\OnePython\5. Sept DS 9AM 4PM\CLASS\Sample1.txt","w")
+f2.write("Line1-Line2-Line3")
+
+print(f2.mode)
+f2.close()
+
+f2 = open(r"C:\Users\RAHUL\Documents\OnePython\5. Sept DS 9AM 4PM\CLASS\Sample1.txt","r")
+# print(f2.read()) # reading complete file at once 
+print(f2.read(6)) # reading 6 char
+print(f2.read(6)) # reading next 6 char
+print(f2.read(6))
+
+# resetting the cursor positin using seek
+
+f2.seek(12)
+print(f2.read(6))
+print(f2.read(6))
+#resetting to start of line
+f2.seek(0)
+print(f2.read(6))
+
+
+# appending  a file
+f2 = open(r"C:\Users\RAHUL\Documents\OnePython\5. Sept DS 9AM 4PM\CLASS\Sample1.txt","a")
+f2.write("Line4")
+f2.write("\n Line4")
+f2.write("\nLine4")
+f2.write("\nLine5")
+f2.close()
+
+# reading multiple lines
+print("***********")
+f2 = open(r"C:\Users\RAHUL\Documents\OnePython\5. Sept DS 9AM 4PM\CLASS\Sample1.txt","r")
+
+print(f2.readline()) # will read 1st line
+print(f2.readline()) # will read 2nd line
+print(f2.readline()) # will read 3rd line
+f2.seek(0) # reset to zero
+
+print("***********")
+f2.seek(0)
+for i in f2:
+    print(i,  end=" ") # will read 1st line
+
+
+f2.close()
+# readlines
+f2 = open(r"C:\Users\RAHUL\Documents\OnePython\5. Sept DS 9AM 4PM\CLASS\Sample1.txt","r")
+print(f2.readlines()[3])
+f2.close()
+
+# redirecting op to a file 
+f2 = open(r"C:\Users\RAHUL\Documents\OnePython\5. Sept DS 9AM 4PM\CLASS\Sample1.txt","w")
+
+for i in range(10):
+    print("Line" , i , file=f2)
+
+f2.close()
+
+# content manager
+
+with open(r"C:\Users\RAHUL\Documents\OnePython\5. Sept DS 9AM 4PM\CLASS\Sample1.txt") as f:
+    print(f.read())
