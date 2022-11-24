@@ -1,0 +1,153 @@
+#################################################
+#  zz.11.2022 04.00PM
+#################################################
+#  TOPICS TO BE COVERED
+# 👉 OOP IN PYTHON 
+#################################################
+
+class PowerPlant:
+
+
+    def __init__(self, location,capacity):
+        self.__location =  location
+        self.capacity = capacity
+
+    def locate(self):
+        print("Location is :" , self.__location)
+
+    def locate_chhange(self,new):
+        self.__location = new
+
+
+
+
+
+p1 = PowerPlant("Tarapur", "500W")
+# print(p1.__location)
+p1.__location =  "Bhiwandi"
+print(p1.__location)
+print(id(p1.__location))
+
+
+print(p1._PowerPlant__location) 
+print(id(p1._PowerPlant__location))
+
+
+
+
+p1.locate()
+
+p1.locate_chhange("Nagpur")
+p1.locate()
+
+p1._PowerPlant__location = "Kasara"
+print(p1._PowerPlant__location) 
+p1.locate()
+
+
+
+class Student:
+    def __init__(self, name, roll_no, age):
+        # private member
+        self.name = name
+        # private members to restrict access
+        # avoid direct data modification
+        self.__roll_no = roll_no
+        self.__age = age
+
+    def show(self):
+        print('Student Details:', self.name, self.__roll_no)
+
+    # # getter methods
+    # def get_roll_no(self):
+    #     return self.__roll_no
+
+    # getter methods
+    @property
+    def roll_no(self):
+        return self.__roll_no
+
+
+
+    @roll_no.setter
+    def roll_no(self, number):
+        if number > 50:
+            print('Invalid roll no. Please set correct roll number')
+        else:
+            self.__roll_no = number
+
+    # setter method to modify data member
+    # condition to allow data modification with rules
+    # def set_roll_no(self, number):
+    #     if number > 50:
+    #         print('Invalid roll no. Please set correct roll number')
+    #     else:
+    #         self.__roll_no = number
+
+jessa = Student('Jessa', 10, 15)
+
+# jessa.show()
+
+
+# jessa.set_roll_no(91)
+# jessa.show()
+# jessa._Student__roll_no = 100
+# jessa.show()
+
+print(jessa.roll_no)
+jessa.roll_no = 11
+print(jessa.roll_no)
+
+
+class bank:
+    def __init__(self,name, acc , bal, pin ):
+        self.name   = name
+        self.acc  = acc
+        self.bal  = bal
+        self.__pin  = pin
+    
+    def show_pin(self):
+        return self.__pin
+
+    def set_pin(self,new_pin):
+        self.__pin = new_pin
+
+roshan = bank("Roshan", 555 , 1000 , 1234)
+
+print(roshan.bal)
+# accessing the pin
+# print(roshan.__pin)# error
+
+print(roshan.show_pin())
+
+roshan.__pin = 4321
+print(roshan.show_pin())
+
+# setting new pin
+roshan.set_pin(4321)
+print(roshan.show_pin())
+
+# pythopnic way
+
+
+
+class bank:
+    def __init__(self,name, acc , bal, pin ):
+        self.name   = name
+        self.acc  = acc
+        self.bal  = bal
+        self.__pin  = pin
+    @property
+    def pin(self):
+        return self.__pin
+
+    @pin.setter
+    def pin(self,new_pin):
+        self.__pin = new_pin
+
+roshan = bank("Roshan", 555 , 1000 , 1234)
+print(roshan.pin)
+roshan.pin = 5000
+print(roshan.pin)
+
+
