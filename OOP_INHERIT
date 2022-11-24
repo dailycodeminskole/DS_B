@@ -1,0 +1,173 @@
+# single Inheritance
+
+# Parent class 1
+class Person:
+    def person_info(self, name, age):
+        print('Inside Person class')
+        print('Name:', name, 'Age:', age)
+
+
+# Child class
+class Employee(Person):
+    def Employee_info(self, salary, skill):
+        print('Inside Employee class')
+        print('Salary:', salary, 'Skill:', skill)
+
+emp = Employee()
+emp.person_info('Jessa', 28)
+emp.Employee_info(12000, 'Machine Learning')
+
+# Multiple Inheritance
+
+# Example
+
+# Parent class 1
+class Person:
+    def person_info(self, name, age):
+        print('Inside Person class')
+        print('Name:', name, 'Age:', age)
+
+# Parent class 2
+class Company:
+    def company_info(self, company_name, location):
+        print('Inside Company class')
+        print('Name:', company_name, 'location:', location)
+
+# Child class
+class Employee(Person, Company):
+    def Employee_info(self, salary, skill):
+        print('Inside Employee class')
+        print('Salary:', salary, 'Skill:', skill)
+
+# Create object of Employee
+emp = Employee()
+
+# access data
+emp.person_info('Jessa', 28)
+emp.company_info('Google', 'Atlanta')
+emp.Employee_info(12000, 'Machine Learning')
+
+# Multilevel inheritance
+
+# Example
+
+
+# Base class
+class Vehicle:
+    def Vehicle_info(self):
+        print('Inside Vehicle class')
+
+# Child class
+class Car(Vehicle):
+    def car_info(self):
+        print('Inside Car class')
+
+# Child class
+class SportsCar(Car):
+    def sports_car_info(self):
+        print('Inside SportsCar class')
+
+# Create object of SportsCar
+s_car = SportsCar()
+
+# access Vehicle's and Car info using SportsCar object
+s_car.Vehicle_info()
+s_car.car_info()
+s_car.sports_car_info()
+
+
+# Python super() function
+# understanding MRO
+# Example
+
+class CompanyG:
+    def company_name(self):
+        return 'Google'
+
+class CompanyY:
+    def company_name(self):
+        return 'Youtube'
+
+# class Employee(CompanyG,CompanyY):
+class Employee(CompanyY,CompanyG):
+    def info(self):
+        # Calling the superclass method using super()function
+        c_name = super().company_name()
+        print("Jessa works at", c_name)
+
+# Creating object of child class
+emp = Employee()
+emp.info()
+
+# Method Overriding
+
+# Example
+class Vehicle:
+    def max_speed(self):
+        print("max speed is 100 Km/Hour")
+
+class Car(Vehicle):
+    # overridden the implementation of Vehicle class
+    def max_speed(self):
+        print("max speed is 200 Km/Hour")
+
+# Creating object of Car class
+car = Car()
+car.max_speed()
+
+
+
+# constructors in inheritance
+
+class Person:
+    def __init__(self, name,idnumber):
+        self.name =  name
+        self.idnumber  = idnumber
+
+    def display(self):
+        print(self.name , self.idnumber)
+
+
+class Employee(Person):
+    def __init__(self, name, idnumber,salary,post):
+        super().__init__(name, idnumber)
+        self.salary = salary
+        self.post = post
+
+a = Employee('Rahul', 886012, 200000, "Intern")
+a.display()
+
+
+# issubclass(class, classinfo)
+#  isinstance(t,Triangle) # pending concept
+
+
+
+# Example
+
+class Company:
+    def fun1(self):
+        print("Inside parent class")
+
+class Employee(Company):
+    def fun2(self):
+        print("Inside child class.")
+
+class Player:
+    def fun3(self):
+        print("Inside Player class.")
+
+# Result True
+print(issubclass(Employee, Company))
+
+# Result False
+print(issubclass(Employee, list))
+
+# Result False
+print(issubclass(Player, Company))
+
+# Result True
+print(issubclass(Employee, (list, Company)))
+
+# Result True
+print(issubclass(Company, (list, Company)))
