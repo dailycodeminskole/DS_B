@@ -1,5 +1,14 @@
 # single Inheritance
 
+
+# inheritance
+# single
+# multiple
+# multi level
+
+
+
+# Example 2
 # Parent class 1
 class Person:
     def person_info(self, name, age):
@@ -74,6 +83,40 @@ s_car = SportsCar()
 s_car.Vehicle_info()
 s_car.car_info()
 s_car.sports_car_info()
+
+
+
+# Example 
+# single
+# multiple
+# multi level
+
+
+class A:
+    def ParentInfo(self):
+        print("INside Parent class")
+
+class B(A):
+    def ChildINfo(self):
+        print("INside child class")
+
+class C(B):
+    def GrChild(self):
+        print("INside Grand child class")
+
+
+base = A()
+child =  B()
+grchild =  C()
+
+# base.ParentInfo()
+# child.ChildINfo()
+# child.ParentInfo
+# grchild.GrChild()
+
+grchild.ParentInfo()
+
+
 
 
 # Python super() function
